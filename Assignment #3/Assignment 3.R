@@ -3,7 +3,9 @@ rm(list=ls(all=TRUE))
 cat("\014")
 
 library(tidyverse)
-
+library(readr)
+gc <- read_csv("~/BIS-244-Spring-2023-SpasianoGiacomo/Assignment #3/gc.csv")
+View(gc)
 # ========================================================================
 #                             German Credit Data, german_credit_data.csv
 # ========================================================================
@@ -42,7 +44,10 @@ library(tidyverse)
 # Part a) create a scatter plot with Credit Amount on y-axis, 
 # Duration of Credit on x-axis, and pass the factor 'Type of Housing' as facet. Place your code into the box below.
 # ========================================================================
-
+p <- ggplot(data = gc,
+            mapping = aes(x = Duration,
+                          y = `Credit amount`))
+p + geom_point() + facet_wrap(~Housing)
 
 
                             
@@ -54,15 +59,20 @@ library(tidyverse)
 # Duration of Credit on x-axis, and pass the factor 'job' as facet. 
 # Place your code into the box below.
 # ========================================================================
-
-
+p <- ggplot(data = gc,
+            mapping = aes(x = Duration,
+                          y = `Credit amount`))
+p + geom_point() + facet_wrap(~Job)
 
 # ========================================================================
 
 # Part c) create a scatter plot with Credit Amount on y-axis, 
 # Duration of Credit on x-axis, and pass the factors 'risk' and 'hosuing' as facets. Place your code into the box below.
 # ========================================================================
-
+p <- ggplot(data = gc,
+            mapping = aes(x = Duration,
+                          y = `Credit amount`))
+p + geom_point() + facet_wrap(Risk ~ Housing)
 
 
 
